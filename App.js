@@ -14,12 +14,12 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator screenOptions ={{headerStyle :{backgroundColor:'#8C0C33'},headerTintColor:'#F9DEC9'}}>
        
-        <Stack.Screen name = "MainTabScreen" component = {MainTabScreen} />
+        {/* <Stack.Screen name = "MainTabScreen" component = {MainTabScreen} /> */}
 
         {/* <Stack.Screen name = "MainTabScreen" component = {User} /> */}
 
-        {/* <Stack.Screen name = "Login" component = {Login} />
-        <Stack.Screen name = "Register" component = {Register} /> */}
+        <Stack.Screen name = "Login" component = {Login} />
+        <Stack.Screen name = "Register" component = {Register} />
         
 
       </Stack.Navigator>
