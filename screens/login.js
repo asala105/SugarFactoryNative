@@ -1,8 +1,39 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, {useState, createRef} from 'react';
 import { StyleSheet, Text, View, ScrollView, ImageBackground, Dimensions, Image, Item, TextInput, Button, Pressable } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import api from '../api';
+import AsyncStorage from '@react-native-community/async-storage';
+
 export default function Login( {navigation}) {
+  const [userEmail, setUserEmail] = useState('');
+  const [userPassword, setUserPassword] = useState('');
+  const [errortext, setErrortext] = useState('');
+
+  const passwordInputRef = createRef();
+
+  const handleLogin = () => {
+    setErrortext('');
+    if ((!userEmail) || (!userPassword)) {
+      setErrortext('Both email and password are required');
+      return;
+    }
+    let dataToSend = {email: userEmail, password: userPassword};
+    api.login(dataToSend, { headers: { 'Accept': "application/json", 'content-type': "application/json" } })
+    .then(response => {
+      // If server response message same as Data Matched
+      if (response.status === 200) {
+        AsyncStorage.setItem('access_token', response.data.access_token);
+        //navigation.replace('DrawerNavigationRoutes'); Will be added when mohammad is done with the home page
+      } else {
+        setErrortext('Please check your email id or password');
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  };
+
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <ImageBackground
@@ -28,15 +59,25 @@ export default function Login( {navigation}) {
           </Text>
           <View style={{ marginTop: 30 }}>
             <Text style={{ color: '#8C0C33', fontSize: 14, fontWeight: 'normal',marginBottom:10 }}> <Icon name="user" style={{ fontSize: 16 }} />  Email address</Text>
-            <TextInput  placeholder=' Enter your email address' keyboardType='email-address' style={styles.inputs}></TextInput>
+            <TextInput  placeholder=' Enter your email address' keyboardType='email-address' style={styles.inputs}
+            onChangeText={(UserEmail) => setUserEmail(UserEmail)} ></TextInput>
 
             <Text style={{ color: '#8C0C33', fontSize: 14, fontWeight: 'normal',marginBottom:10, marginTop:5 }}> <Icon name="lock" style={{ fontSize: 16 }} />  Password</Text>
-            <TextInput placeholder=' Enter your password' keyboardType='email-address' style={styles.inputs}></TextInput>
+            <TextInput placeholder=' Enter your password' keyboardType='email-address' style={styles.inputs}
+             onChangeText={(UserPassword) => setUserPassword(UserPassword)}></TextInput>
           </View>
+
+          {/* Error message */}
+          {errortext != '' ? (
+              <Text style={styles.errorTextStyle}>
+                {errortext}
+              </Text>
+            ) : null}
+
           {/* Button */}
           <View style={styles.buttonView}>
             
-            <Pressable style={styles.button} >
+            <Pressable style={styles.button} onPress={handleLogin}>
               <Text style={styles.btntext}>Login</Text>
             </Pressable>
 
