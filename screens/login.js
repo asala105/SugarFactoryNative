@@ -21,7 +21,7 @@ export default function Login( {navigation}) {
           <Text style={{ color: '#8C0C33', fontSize: 24,fontWeight:'bold' }}>Welcome</Text>
           <Text>Don't have an account ?
           <Pressable onPress ={()=>navigation.navigate("Register")}>
-             <Text style={{ color: 'red', fontStyle: 'italic' }}>  Register Now</Text>
+             <Text style={{ color: '#8C0C33', fontStyle: 'italic' }}>  Register Now</Text>
           </Pressable>
 
             

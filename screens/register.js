@@ -21,7 +21,7 @@ export default function Register() {
                 <View style={{ padding: 40 }}>
                     <Text style={{ color: '#8C0C33', fontSize: 24, fontWeight: 'bold' }}>Create an account</Text>
                     <Text>Already have an acoount ?
-                        <Text style={{ color: 'red', fontStyle: 'italic' }}>  Go Back</Text>
+                        <Text style={{ color: '#8C0C33', fontStyle: 'italic' }}>  Go Back</Text>
                     </Text>
                     <View style={{ marginTop: 30 }}>
                         <Text style={{ color: '#8C0C33', fontSize: 18, fontWeight: 'normal' }}> <Icon name="user" style={{ fontSize: 20 }} /> First Name</Text>
@@ -42,8 +42,9 @@ export default function Register() {
                         <Text style={{ color: '#8C0C33', fontSize: 18, fontWeight: 'normal' }}> <Icon name="venus-mars" style={{ fontSize: 20 }} />  Gender</Text>
                         <Picker
 
-                            style={{ height: 50, width: 250 }}
+                            style={{ height: 50, width: 250 , backgroundColor :"#F9DEC9" }}
                             mode={"dialog"}
+                            
 
                         >
 
@@ -54,7 +55,7 @@ export default function Register() {
                         <Text style={{ color: '#8C0C33', fontSize: 18, fontWeight: 'normal' }}> <Icon name="filter" style={{ fontSize: 20 }} />  Interested In</Text>
                         <Picker
 
-                            style={{ height: 50, width: 250 }}
+                            style={{ height: 50, width: 250, backgroundColor :"#F9DEC9" }}
                             mode={"dialog"}
 
                         >
