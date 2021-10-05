@@ -3,46 +3,35 @@ import React from 'react';
 import { StyleSheet, Text, View, ScrollView, ImageBackground, Dimensions, Image, Item, TextInput, Button, Pressable } from 'react-native';
 import { Picker } from "@react-native-picker/picker";
 import Icon from 'react-native-vector-icons/FontAwesome';
-export default function Register() {
+export default function Register({navigation}) {
     return (
         <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-            <ImageBackground
-                source={require('../pictures/couple1.png')}
-                style={styles.image}>
-
-            </ImageBackground>
-            <View style={{ marginTop: -170 }} >
-                <Image source={require('../pictures/Logosingle.png')} style={styles.icon} />
-            </View>
-
-            {/* Bottom view */}
+            
             <View style={styles.bottomView}>
                 {/* Welcome View */}
-                <View style={{ padding: 40 }}>
+                <View style={{ padding: 20 }}>
                     <Text style={{ color: '#8C0C33', fontSize: 24, fontWeight: 'bold' }}>Create an account</Text>
-                    <Text>Already have an acoount ?
-                        <Text style={{ color: '#8C0C33', fontStyle: 'italic' }}>  Go Back</Text>
-                    </Text>
+                    
                     <View style={{ marginTop: 30 }}>
-                        <Text style={{ color: '#8C0C33', fontSize: 18, fontWeight: 'normal' }}> <Icon name="user" style={{ fontSize: 20 }} /> First Name</Text>
-                        <TextInput placeholder='Enter your first name' keyboardType='email-address' style={styles.inputs}></TextInput>
+                        <Text style={{ color: '#8C0C33', fontSize: 14, fontWeight: 'normal',marginBottom:10  }}> <Icon name="user" style={{ fontSize: 16 }} /> First Name</Text>
+                        <TextInput placeholder=' Enter your first name' keyboardType='email-address' style={styles.inputs}></TextInput>
 
-                        <Text style={{ color: '#8C0C33', fontSize: 18, fontWeight: 'normal' }}> <Icon name="user" style={{ fontSize: 20 }} />  Last Name</Text>
-                        <TextInput placeholder='Enter your last name' keyboardType='email-address' style={styles.inputs}></TextInput>
+                        <Text style={{ color: '#8C0C33', fontSize: 14, fontWeight: 'normal',marginBottom:10, marginTop:7 }}> <Icon name="user" style={{ fontSize: 16 }} />  Last Name</Text>
+                        <TextInput placeholder=' Enter your last name' keyboardType='email-address' style={styles.inputs}></TextInput>
 
-                        <Text style={{ color: '#8C0C33', fontSize: 18, fontWeight: 'normal' }}> <Icon name="envelope" style={{ fontSize: 20 }} />  Email address</Text>
-                        <TextInput placeholder='Enter your email address' keyboardType='email-address' style={styles.inputs}></TextInput>
+                        <Text style={{ color: '#8C0C33', fontSize: 14, fontWeight: 'normal',marginBottom:10, marginTop:7  }}> <Icon name="envelope" style={{ fontSize: 16 }} />  Email address</Text>
+                        <TextInput placeholder=' Enter your email address' keyboardType='email-address' style={styles.inputs}></TextInput>
 
-                        <Text style={{ color: '#8C0C33', fontSize: 18, fontWeight: 'normal' }}> <Icon name="lock" style={{ fontSize: 20 }} />  Password</Text>
-                        <TextInput placeholder='Enter your password' keyboardType='email-address' style={styles.inputs}></TextInput>
-
-
+                        <Text style={{ color: '#8C0C33', fontSize: 14, fontWeight: 'normal',marginBottom:10, marginTop:7  }}> <Icon name="lock" style={{ fontSize: 16 }} />  Password</Text>
+                        <TextInput placeholder=' Enter your password' keyboardType='email-address' style={styles.inputs}></TextInput>
 
 
-                        <Text style={{ color: '#8C0C33', fontSize: 18, fontWeight: 'normal' }}> <Icon name="venus-mars" style={{ fontSize: 20 }} />  Gender</Text>
+
+
+                        <Text style={{ color: '#8C0C33', fontSize: 14, fontWeight: 'normal',marginBottom:10, marginTop:7 }}> <Icon name="venus-mars" style={{ fontSize: 16 }} />  Gender</Text>
                         <Picker
 
-                            style={{ height: 50, width: 250 , backgroundColor :"#F9DEC9" }}
+                            style={{ height: 40, width: 318 , backgroundColor :"white",borderRadius :7,border:"2px solid #8C0C33  " }}
                             mode={"dialog"}
                             
 
@@ -52,10 +41,10 @@ export default function Register() {
                             <Picker.Item label="Female" value={1} />
                         </Picker>
 
-                        <Text style={{ color: '#8C0C33', fontSize: 18, fontWeight: 'normal' }}> <Icon name="filter" style={{ fontSize: 20 }} />  Interested In</Text>
+                        <Text style={{ color: '#8C0C33', fontSize: 14, fontWeight: 'normal',marginBottom:10, marginTop:7 }}> <Icon name="filter" style={{ fontSize: 16 }} />  Interested In</Text>
                         <Picker
 
-                            style={{ height: 50, width: 250, backgroundColor :"#F9DEC9" }}
+                            style={{ height: 40, width: 318, backgroundColor :"white",borderRadius :7,border:"2px solid #8C0C33 " }}
                             mode={"dialog"}
 
                         >
@@ -65,11 +54,18 @@ export default function Register() {
                         </Picker>
                     </View>
                     {/* Button */}
-                    <View style={styles.buttonView}>
 
-                        <Pressable style={styles.button} >
-                            <Text style={styles.btntext}>Register</Text>
-                        </Pressable>
+                    <View style ={{marginTop :30}}>
+                        <Text>Already have an account ?
+                            <Text style={{ color: '#8C0C33', fontStyle: 'italic' }}>  Go Back</Text>
+                        </Text>
+                        <View style={styles.buttonView}>
+
+                            <Pressable style={styles.button}  >
+                                <Text style={styles.btntext}>Register</Text>
+                            </Pressable>
+                    </View>
+                    
 
 
                     </View>
@@ -110,9 +106,9 @@ const styles = StyleSheet.create({
         flex: 1.5,
         backgroundColor: '#F9DEC9',
         bottom: 0,
-        borderTopStartRadius: 40,
-        borderTopEndRadius: 40,
-        height: 700
+        height: 700,
+        marginBottom : 10
+        
     },
 
     buttonView: {
@@ -123,12 +119,15 @@ const styles = StyleSheet.create({
     inputs: {
         paddingBottom: 10,
         paddingTop: 10,
+        backgroundColor : 'white',
+        borderRadius : 7,
+        border: " 2px solid #8C0C33"
     },
     button: {
         alignItems: 'center',
         justifyContent: 'center',
         paddingVertical: 12,
-        paddingHorizontal: 52,
+        paddingHorizontal: 122,
         borderRadius: 50,
         elevation: 4,
         backgroundColor: '#8C0C33',

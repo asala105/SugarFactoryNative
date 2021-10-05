@@ -17,7 +17,7 @@ export default function Login( {navigation}) {
       {/* Bottom view */}
       <View style={styles.bottomView}>
         {/* Welcome View */}
-        <View style={{ padding: 40}}>
+        <View style={{ padding: 20}}>
           <Text style={{ color: '#8C0C33', fontSize: 24,fontWeight:'bold' }}>Welcome</Text>
           <Text>Don't have an account ?
           <Pressable onPress ={()=>navigation.navigate("Register")}>
@@ -27,11 +27,11 @@ export default function Login( {navigation}) {
             
           </Text>
           <View style={{ marginTop: 30 }}>
-            <Text style={{ color: '#8C0C33', fontSize: 18, fontWeight: 'normal' }}> <Icon name="user" style={{ fontSize: 20 }} />  Email address</Text>
-            <TextInput  placeholder='Enter your email address' keyboardType='email-address' style={styles.inputs}></TextInput>
+            <Text style={{ color: '#8C0C33', fontSize: 14, fontWeight: 'normal',marginBottom:10 }}> <Icon name="user" style={{ fontSize: 16 }} />  Email address</Text>
+            <TextInput  placeholder=' Enter your email address' keyboardType='email-address' style={styles.inputs}></TextInput>
 
-            <Text style={{ color: '#8C0C33', fontSize: 18, fontWeight: 'normal' }}> <Icon name="lock" style={{ fontSize: 20 }} />  Password</Text>
-            <TextInput placeholder='Enter your password' keyboardType='email-address' style={styles.inputs}></TextInput>
+            <Text style={{ color: '#8C0C33', fontSize: 14, fontWeight: 'normal',marginBottom:10, marginTop:5 }}> <Icon name="lock" style={{ fontSize: 16 }} />  Password</Text>
+            <TextInput placeholder=' Enter your password' keyboardType='email-address' style={styles.inputs}></TextInput>
           </View>
           {/* Button */}
           <View style={styles.buttonView}>
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     borderTopStartRadius: 40,
     borderTopEndRadius: 40,
-    height: 425
+    height: 450
   },
 
   buttonView: {
@@ -92,15 +92,21 @@ const styles = StyleSheet.create({
   inputs: {
     paddingBottom: 10,
     paddingTop: 10,
+    backgroundColor : 'white',
+    borderRadius : 7,
+    border: " 2px solid #8C0C33"
+    
+    
   },
   button: {
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 12,
-    paddingHorizontal: 52,
+    paddingHorizontal: 122,
     borderRadius: 50,
     elevation: 4,
     backgroundColor: '#8C0C33',
+    marginTop : 15
   },
   btntext :{
     fontSize: 18,

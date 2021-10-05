@@ -5,8 +5,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default function Home() {
     return ( 
-        <ScrollableView>
+        <ScrollView style={{backgroundColor : '#FBE8DA'}}>
             <Text>Hello from Home </Text>
-        </ScrollableView>
+        </ScrollView>
      );
 }
