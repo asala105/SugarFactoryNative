@@ -9,21 +9,31 @@ import MainTabScreen from './screens/mainTabScreen';
 
 const Stack = createNativeStackNavigator();
 
-export default function App() {
+const Auth = () =>{
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions ={{headerStyle :{backgroundColor:'#8C0C33'},headerTintColor:'#F9DEC9'}}>
-       
-        {/* <Stack.Screen name = "MainTabScreen" component = {MainTabScreen} /> */}
-
-        {/* <Stack.Screen name = "MainTabScreen" component = {User} /> */}
 
         <Stack.Screen name = "Login" component = {Login} />
         <Stack.Screen name = "Register" component = {Register} />
         
+      </Stack.Navigator>
+
+    </NavigationContainer>
+  );
+}
+
+const App = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator screenOptions ={{headerStyle :{backgroundColor:'#8C0C33'},headerTintColor:'#F9DEC9'}}>
+
+        <Stack.Screen name = "MainTabScreen" component = {MainTabScreen} />
 
       </Stack.Navigator>
 
     </NavigationContainer>
   );
 }
+
+export default App;

@@ -12,34 +12,31 @@ export default function Register({navigation}) {
     const [userLname, setUserLname] = useState('');
     const [userGender, setUserGender] = useState('');
     const [userInterest, setUserInterest] = useState('');
-    const [errortext, setErrortext] = useState('');
+    const [errorText, setErrorText] = useState('');
+    const [successText, setSuccessText] = useState('');
     const [registerEnabled, setRegisterEnabled] = useState(false);
   
   const handleRegister = () => {
     console.log('register');
-      setErrortext('');
+      setErrorText('');
       if ((!userEmail) || (!userPassword) || (!userFname) || (!userLname) || (!userGender) || (!userInterest)) {
-        setErrortext('All fields are required');
+        setErrorText('All fields are required');
         return;
       }
       let dataToSend = {first_name:userFname, last_name:userLname, email: userEmail, password: userPassword, gender: userGender, interested_in:userInterest};
       console.log(dataToSend);
       api.register(dataToSend, { headers: { 'Accept': "application/json", 'content-type': "application/json" } })
       .then(response => {
-          console.log(response);
+        setSuccessText(response.data.message);
           // If server response message same as Data Matched
-          if (response.status === 201) {
-            console.log(response);
-            //AsyncStorage.setItem('access_token', response.data.access_token);
-            console.log(response.data.access_token);
-            //navigation.replace('DrawerNavigationRoutes'); Will be added when mohammad is done with the home page
-          } else {
-            console.log('Please check your email id or password');
-          }
+        if (response.status === 201) {
+            //navigation.replace('DrawerNavigationRoutes');
+        } else {
+            setErrorText('Please make sure you entered all the required fields');
+        }
         })
         .catch((error) => {
-          //Hide Loader
-          console.error(error);
+        setErrorText("The email is already taken! try another email");
         });
     };
 
@@ -96,6 +93,12 @@ export default function Register({navigation}) {
                             <Picker.Item label="Female" value={1} />
                         </Picker>
                     </View>
+                              {/* Error message */}
+          {errorText != '' ? (
+              <Text style={styles.errorTextStyle}>
+                {errorText}
+              </Text>
+            ) : null}
                     {/* Button */}
 
                     <View style ={{marginTop :30}}>
