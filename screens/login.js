@@ -23,6 +23,9 @@ export default function Login( {navigation}) {
     .then(response => {
       // If server response message same as Data Matched
       if (response.status === 200) {
+        console.log(response.data);
+        console.log(response.data.user);
+        AsyncStorage.setItem('userData',response.data);
         AsyncStorage.setItem('access_token', response.data.access_token);
         navigation.replace('MainTabScreen');
       } else {

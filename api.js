@@ -41,11 +41,15 @@ export default{
 
     getNotifications: async () =>{
         let header = await getHeader();
-        console.log(header);
         let res = await axios.get(`${BASE_URL}/get_notifications`, header);
         return res;
-    }
+    },
 
+    getUserData: async () =>{
+        let header = await getHeader();
+        let res = await axios.get(`${BASE_URL}/user_profile`, header);
+        return res;
+    }
     // getNotifications: async () =>{
     //     let header = await getHeader();
     //     console.log(header);

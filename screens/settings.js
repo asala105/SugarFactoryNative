@@ -1,16 +1,28 @@
-
+import AsyncStorage from '@react-native-community/async-storage';
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { StyleSheet, Text, View, ScrollView, ImageBackground, Dimensions, Image, Item, TextInput, Button, Pressable } from 'react-native';
 import { Avatar, Caption, Title, TouchableRipple } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
+import api from '../api';
 
-
-export default function Settings() {
-    const navigation = useNavigation();
+export default function Settings({navigation}) {
+    const [userData, setUserData] = useState({});
+    async function getUser() {
+        api.getUserData()
+        .then(response => {
+            setUserData(response.data);
+        })
+        .catch(error => {
+            console.log('Error');
+        });
+    }
+useEffect(() => {
+    getUser();
+}, [])
     return ( 
         <ScrollView style={styles.container}>
             <View style = {styles.userInfoSection}>
@@ -19,7 +31,7 @@ export default function Settings() {
                         source={require('../pictures/avatar2.svg')}
                         size ={80}/>
                     <View style ={{marginLeft : 20}}>
-                        <Title style = {[styles.title,{marginTop :15 ,marginBottom : 5}]}>John Doe</Title>
+                        <Title style = {[styles.title,{marginTop :15 ,marginBottom : 5}]}></Title>
                         <Caption style = {styles.caption}>John_doe@email.com</Caption>
                     </View>    
                 </View>
@@ -58,7 +70,7 @@ export default function Settings() {
                     </View>
                     
                 </TouchableOpacity>
-                <TouchableOpacity onPress ={()=>navigation.navigate('Settings')} >
+                <TouchableOpacity onPress ={()=>navigation.navigate('Edit Profile')} >
                     <View style = {styles.menuItem}>
                         <Icon name = 'cog' color = "#8C0C33" size={25} />
                         <Text style={styles.menuItemText}>Edit Profile</Text>
