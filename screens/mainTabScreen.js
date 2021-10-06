@@ -1,4 +1,4 @@
-import {useNavigation, NavigationContainer } from '@react-navigation/native';
+import { useNavigation, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from './home';
@@ -11,16 +11,18 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import Icon from 'react-native-vector-icons/FontAwesome';
 import AsyncStorage from '@react-native-community/async-storage';
 import Switching from './switching';
+import MessageStack from './messageStack';
 
 const Tab = createMaterialBottomTabNavigator();
 
 
+
 export default function MainTabScreen() {
-let navigation = useNavigation();
-    let auth = ''
+  let navigation = useNavigation();
+  let auth = ''
   AsyncStorage.getItem("access_token").then((value) => {
     auth = value;
-    if (auth==null) {
+    if (auth == null) {
       navigation.replace('Auth');
     }
   })
@@ -29,8 +31,8 @@ let navigation = useNavigation();
     // <Tab.Navigator initialRouteName="Home">
     //   <Tab.Screen name="Home" component={HomeScreen} />
     //   <Tab.Screen name="Settings" component={SettingsScreen} />
-    
-      
+
+
     // </Tab.Navigator>
     <Tab.Navigator
       initialRouteName="Home"
@@ -45,11 +47,11 @@ let navigation = useNavigation();
           tabBarIcon: ({ color }) => (
             <Icon name="home" color={'#F9DEC9'} size={23} />
           ),
-          title : 'Home',
-          
+          title: 'Home',
+
         }}
-        
-        
+
+
       />
       <Tab.Screen
         name="Notifications"
@@ -59,18 +61,18 @@ let navigation = useNavigation();
           tabBarIcon: ({ color }) => (
             <Icon name="bell" color={'#F9DEC9'} size={23} />
           ),
-          title : 'Home',
+          title: 'Home',
         }}
       />
       <Tab.Screen
         name="Messages"
-        component={MessagesScreen}
+        component={MessageStack}
         options={{
           tabBarLabel: 'Messages',
           tabBarIcon: ({ color }) => (
             <Icon name="comment" color={'#F9DEC9'} size={23} />
           ),
-          title : 'Home',
+          title: 'Home',
         }}
       />
       <Tab.Screen
@@ -81,7 +83,7 @@ let navigation = useNavigation();
           tabBarIcon: ({ color }) => (
             <Icon name="user" color={'#F9DEC9'} size={23} />
           ),
-          title : 'Home',
+          title: 'Home',
         }}
       />
     </Tab.Navigator>
