@@ -5,6 +5,7 @@ import HomeScreen from './home';
 import SettingsScreen from './settings';
 import NotificationsScreen from './notifications';
 import MessagesScreen from './messages';
+import EditProfile from './editProfile';
 import React from 'react';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -44,7 +45,11 @@ let navigation = useNavigation();
           tabBarIcon: ({ color }) => (
             <Icon name="home" color={'#F9DEC9'} size={23} />
           ),
+          title : 'Home',
+          
         }}
+        
+        
       />
       <Tab.Screen
         name="Notifications"
@@ -54,6 +59,7 @@ let navigation = useNavigation();
           tabBarIcon: ({ color }) => (
             <Icon name="bell" color={'#F9DEC9'} size={23} />
           ),
+          title : 'Home',
         }}
       />
       <Tab.Screen
@@ -64,16 +70,18 @@ let navigation = useNavigation();
           tabBarIcon: ({ color }) => (
             <Icon name="comment" color={'#F9DEC9'} size={23} />
           ),
+          title : 'Home',
         }}
       />
       <Tab.Screen
         name="Profile"
-        component={SettingsScreen}
+        component={EditProfile}
         options={{
-          tabBarLabel: 'Edit Profile',
+          tabBarLabel: 'Profile',
           tabBarIcon: ({ color }) => (
             <Icon name="user" color={'#F9DEC9'} size={23} />
           ),
+          title : 'Home',
         }}
       />
     </Tab.Navigator>

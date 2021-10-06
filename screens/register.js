@@ -45,7 +45,7 @@ export default function Register({navigation}) {
             
             <View style={styles.bottomView}>
                 {/* Welcome View */}
-                <View style={{ padding: 20 }}>
+                <View style={{ padding: 20 ,height : 700 }}>
                     <Text style={{ color: '#8C0C33', fontSize: 24, fontWeight: 'bold' }}>Create an account</Text>
                     
                     <View style={{ marginTop: 30 }}>

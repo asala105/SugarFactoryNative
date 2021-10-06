@@ -59,7 +59,7 @@ export default function Notifications() {
                     return (
                         <View style={styles.notificationBox}>
                             <Image style={styles.icon}
-                               source={require('../pictures/avataricon.png')} />
+                               source={require('../pictures/avatar1.svg')} />
 
                             <Text style={styles.description}>{item.description}</Text>
                         </View>
@@ -96,7 +96,7 @@ export default function Notifications() {
 // });
 const styles = StyleSheet.create({
     container:{
-      backgroundColor:'#F9DEC9'
+      backgroundColor:'#FBE8DA'
     },
     notificationList:{
       marginTop:20,

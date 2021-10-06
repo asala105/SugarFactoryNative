@@ -49,7 +49,7 @@ export default function Login( {navigation}) {
       {/* Bottom view */}
       <View style={styles.bottomView}>
         {/* Welcome View */}
-        <View style={{ padding: 20}}>
+        <View style={{ padding: 20, height : 420}}>
           <Text style={{ color: '#8C0C33', fontSize: 24,fontWeight:'bold' }}>Welcome</Text>
           <Text>Don't have an account ?
           <Pressable onPress ={()=>navigation.navigate("Register")}>
