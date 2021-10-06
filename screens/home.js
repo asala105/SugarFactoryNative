@@ -23,6 +23,26 @@ export default function Home() {
     allUsers();
   }, []);
 
+const handleTap = (id) => {
+    api.tapUser(id)
+    .then(response => {
+        alert('Added to favorites list successfully! The other will be notified of your tap!');
+    })
+    .catch(error => {
+        console.log('Error');
+    });
+}
+
+const handleBlock = (id) => {
+    api.blockUser(id)
+    .then(response => {
+        alert('User blocked successfully!');
+    })
+    .catch(error => {
+        console.log('Error');
+    });
+}
+
     return (
         <ScrollView style={{ backgroundColor: '#FBE8DA' }}>
             <View style={styles.container}>
@@ -57,53 +77,7 @@ export default function Home() {
                     </View>
                 </View>
                     )}} />
-                <View style={styles.card}>
-                    <View style={styles.userinfo}>       
-                        <Image style={styles.userimage} source={require('../pictures/avatar2.svg')} />
-                        <View>
-                            <Text style={styles.username}>Jhenn Doe</Text>
-                            <Text style ={styles.bio} > Net Worth  </Text>
-                        </View>
-                    </View>
-                    <Text style ={styles.posttext}> Bio: Hello this is a test </Text>
-                    <View style={styles.divider} />
-                    <View style ={styles.interactionwrapper}>
-                        <TouchableOpacity style={styles.interaction}>
-                            <Icon name = 'heart' style={{fontSize:15}}  />
-                            <Text style = {styles.interactiontext}>Tap</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.interaction}>
-                            <Icon name = 'ban' style={{fontSize:15}}  />
-                            <Text style = {styles.interactiontext}>Block</Text>
-                        </TouchableOpacity>
-
-                    </View>
-                </View>
-                <View style={styles.card}>
-                    <View style={styles.userinfo}>       
-                        <Image style={styles.userimage} source={require('../pictures/avatar2.svg')} />
-                        <View>
-                            <Text style={styles.username}>Jhenn Doe</Text>
-                            <Text style ={styles.bio} > Net Worth  </Text>
-                        </View>
-                    </View>
-                    <Text style ={styles.posttext}> Bio: Hello this is a test </Text>
-                    <View style={styles.divider} />
-                    <View style ={styles.interactionwrapper}>
-                        <TouchableOpacity style={styles.interaction}>
-                            <Icon name = 'heart' style={{fontSize:15}}  />
-                            <Text style = {styles.interactiontext}>Tap</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.interaction}>
-                            <Icon name = 'ban' style={{fontSize:15}}  />
-                            <Text style = {styles.interactiontext}>Block</Text>
-                        </TouchableOpacity>
-
-                    </View>
-                </View>
-                
             </View>
-
         </ScrollView>
     );
 }
