@@ -10,6 +10,7 @@ import React from 'react';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import AsyncStorage from '@react-native-community/async-storage';
+import Switching from './switching';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -74,7 +75,7 @@ let navigation = useNavigation();
       />
       <Tab.Screen
         name="Profile"
-        component={EditProfile}
+        component={Switching}
         options={{
           tabBarLabel: 'Profile',
           tabBarIcon: ({ color }) => (
