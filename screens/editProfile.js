@@ -68,73 +68,73 @@ export default function EditProfile({navigation}) {
                 </View>
                 <View style ={{marginTop : 40}}>
                     <View style = {styles.action}>
-                        <Icon name ='calendar' size ={16} />
+                        <Icon name ='calendar' size ={17} />
                         <TextInput
                             placeholder = "Date of Birth"
                             placeholderTextColor = "#666666"
                             autoCorrect ={false}
-                            style ={styles.textInputt} 
+                            style ={[styles.textInputt,{paddingLeft : 17}]} 
                             onChangeText= {(dob)=>{setUserDob(dob)}}/>
                             
                     </View>
                     <View style = {styles.action}>
-                        <Icon name ='ellipsis-v' size ={16} />
+                        <Icon name ='male' size ={17} />
                         <TextInput
                             placeholder = "Height"
                             placeholderTextColor = "#666666"
                             autoCorrect ={false}
-                            style ={styles.textInputt} 
+                            style ={[styles.textInputt,{paddingLeft : 26}]}
                             onChangeText={(height) =>{setUserHeight(height)}}/>
                             
                     </View>
                     <View style = {styles.action}>
-                        <Icon name ='balance-scale' size ={16} />
+                        <Icon name ='balance-scale' size ={17} />
                         <TextInput
                             placeholder = "Weight"
                             placeholderTextColor = "#666666"
                             keyboardType ='email-address'
                             autoCorrect ={false}
-                            style ={styles.textInputt} 
+                            style ={[styles.textInputt,{paddingLeft : 15}]}
                             onChangeText={(weight)=>{setUserWeight(weight);}}/>
                             
                     </View>
                     <View style = {styles.action}>
-                        <Icon name ='id-badge' size ={16} />
+                        <Icon name ='id-card' size ={17} />
                         <TextInput
-                            placeholder = "nationality"
+                            placeholder = "Nationality"
                             placeholderTextColor = "#666666"
                             autoCorrect ={false}
-                            style ={styles.textInputt} 
+                            style ={[styles.textInputt,{paddingLeft : 18}]}
                             onChangeText={(nationality)=>{setUserNationality(nationality)}}/>
                             
                     </View>
                     <View style = {styles.action}>
-                        <Icon name ='wallet' size ={16} />
+                        <Icon name ='credit-card' size ={17} />
                         <TextInput
-                            placeholder = "net worth"
+                            placeholder = "Net worth"
                             placeholderTextColor = "#666666"
                             autoCorrect ={false}
-                            style ={styles.textInputt} 
+                            style ={[styles.textInputt,{paddingLeft : 19}]}
                             onChangeText={(worth)=>{setUserNetWorth(worth)}}/>
                             
                     </View>
                     <View style = {styles.action}>
-                        <Icon name ='id-badge' size ={16} />
+                        <Icon name ='cc-visa' size ={17} />
                         <TextInput
-                            placeholder = "currency"
+                            placeholder = "Currency"
                             placeholderTextColor = "#666666"
                             autoCorrect ={false}
-                            style ={styles.textInputt} 
+                            style ={[styles.textInputt,{paddingLeft : 16}]}
                             onChangeText={(currency)=>{setUserCurrency(currency)}}/>
                             
                     </View>
                     <View style = {styles.action}>
-                        <Icon name ='id-badge' size ={16} />
+                        <Icon name ='id-badge' size ={17} />
                         <TextInput
                             placeholder = "Bio"
                             placeholderTextColor = "#666666"
                             autoCorrect ={false}
-                            style ={styles.textInputt} 
+                            style ={[styles.textInputt,{paddingLeft : 26}]}
                             onChangeText={(bio)=>{setUserBio(bio)}}/>
                             
                     </View>
@@ -225,7 +225,7 @@ const styles = StyleSheet.create({
     },
     textInputt :{
         flex : 1,
-        marginTop : Platform.OS == 'ios' ? 0 : -12,
+        marginTop : Platform.OS == 'ios' ? 0 : -4,
         paddingLeft :10,
         color : '#05375a'
     }
