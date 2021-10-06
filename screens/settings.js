@@ -11,10 +11,14 @@ import api from '../api';
 
 export default function Settings({navigation}) {
     const [userData, setUserData] = useState({});
+    const [userMatches, setUserMatches] = useState(0);
+    const [userHobbies, setUserHobbies] = useState({});
     async function getUser() {
         api.getUserData()
         .then(response => {
-            setUserData(response.data);
+            setUserData(response.data.user);
+            setUserMatches(response.data.matches);
+            setUserHobbies(response.data.hobbies);
         })
         .catch(error => {
             console.log('Error');
@@ -23,7 +27,8 @@ export default function Settings({navigation}) {
 useEffect(() => {
     getUser();
 }, [])
-    return ( 
+
+return ( 
         <ScrollView style={styles.container}>
             <View style = {styles.userInfoSection}>
                 <View style={{flexDirection : 'row',marginTop :15}}>
@@ -31,33 +36,33 @@ useEffect(() => {
                         source={require('../pictures/avatar2.svg')}
                         size ={80}/>
                     <View style ={{marginLeft : 20}}>
-                        <Title style = {[styles.title,{marginTop :15 ,marginBottom : 5}]}></Title>
-                        <Caption style = {styles.caption}>John_doe@email.com</Caption>
+                        <Title style = {[styles.title,{marginTop :15 ,marginBottom : 5}]}>{userData.first_name + " " + userData.last_name}</Title>
+                        <Caption style = {styles.caption}>{ userData.email }</Caption>
                     </View>    
                 </View>
             </View>
             <View style ={styles.userInfoSection}>
                 <View style = {styles.row}>
                     <Icon name = 'user' color ="#777777" size ={20}/>
-                    <Text style={{color : "#777777",marginLeft :22 }} >Bio</Text>
+                    <Text style={{color : "#777777",marginLeft :22 }} >{userData.bio===null? 'Bio' : userData.bio}</Text>
                 </View>
                 <View style = {styles.row}>
                     <Icon name = 'id-badge' color ="#777777" size ={20}/>
-                    <Text style={{color : "#777777",marginLeft :22 }} >Nationality</Text>
+                    <Text style={{color : "#777777",marginLeft :22 }} >{userData.nationality===null? 'Nationality' : userData.nationality}</Text>
                 </View>
                 <View style = {styles.row}>
                     <Icon name = 'list' color ="#777777" size ={20}/>
-                    <Text style={{color : "#777777",marginLeft :17 }} >Hobbies</Text>
+                    <Text style={{color : "#777777",marginLeft :17 }} >{userHobbies===null? 'Hobby' : userHobbies.name}</Text>
                 </View>
                 
             </View>
             <View style ={styles.infoBoxWrapper}>
                 <View style = {[styles.infoBox,{borderRightColor : '#8C0C33',borderRightWidth : 2}]}>
-                    <Title>$140</Title>
+                    <Title>{userData.currency===null? '$' : userData.currency} {userData.net_worth===null? 0 : userData.net_worth}</Title>
                     <Caption>Net Worth</Caption>
                 </View>
                 <View style = {styles.infoBox}>
-                    <Title>12</Title>
+                    <Title>{userMatches}</Title>
                     <Caption>Matches</Caption>
                 </View>
 

@@ -39,6 +39,12 @@ export default{
     register: (data) =>
     axios.post(`${BASE_URL}/register`, data),
 
+    update: async (data) =>{
+    let header = await getHeader();
+        let res = await axios.post(`${BASE_URL}/update_profile`, data, header);
+        return res;
+    },
+
     getNotifications: async () =>{
         let header = await getHeader();
         let res = await axios.get(`${BASE_URL}/get_notifications`, header);
@@ -49,12 +55,11 @@ export default{
         let header = await getHeader();
         let res = await axios.get(`${BASE_URL}/user_profile`, header);
         return res;
+    },
+
+    getAllUsers: async () =>{
+        let header = await getHeader();
+        let res = await axios.get(`${BASE_URL}/feed`, header);
+        return res;
     }
-    // getNotifications: async () =>{
-    //     let header = await getHeader();
-    //     console.log(header);
-    //     fetch(`${BASE_URL}/get_notifications`, {
-    //     method: 'GET',
-    //     header}
-    //     )}
 }

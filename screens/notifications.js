@@ -5,28 +5,12 @@ import { FlatList } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import api from '../api';
 
-
-const data = [
-    {id:1, description: "Lorem ipsum dolor sit amet, indu consectetur adipiscing elit"}, 
-    {id:2, description: "Lorem ipsum dolor sit amet, indu consectetur adipiscing elit"}, 
-    {id:3, description: "Lorem ipsum dolor sit amet, indu consectetur adipiscing elit"}, 
-    {id:4, description: "Lorem ipsum dolor sit amet, indu consectetur adipiscing elit"}, 
-    {id:5, description: "Lorem ipsum dolor sit amet, indu consectetur adipiscing elit"}, 
-    {id:6, description: "Lorem ipsum dolor sit amet, indu consectetur adipiscing elit"}, 
-    {id:7, description: "Lorem ipsum dolor sit amet, indu consectetur adipiscing elit"},
-    {id:8, description: "Lorem ipsum dolor sit amet, indu consectetur adipiscing elit"},
-    {id:9, description: "Lorem ipsum dolor sit amet, indu consectetur adipiscing elit"},
-]
-
-
-
 export default function Notifications() {
 
   const [notifications, setNotifications] = useState('');
   const allNotifications = ()=>{
     api.getNotifications()
         .then(response => {
-            //setfetchedMessages(response.data);
             setNotifications(response.data);
         })
         .catch(error => {

@@ -1,12 +1,48 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, Text, View, ScrollView, ImageBackground, Dimensions, Image, Item, TextInput, Button, Pressable, Platform } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import api from '../api';
 
+export default function EditProfile({navigation}) {
+    const [userDob, setUserDob] = useState('');
+    const [userHeight, setUserHeight] = useState('');
+    const [userWeight, setUserWeight] = useState('');
+    const [userNationality, setUserNationality] = useState('');
+    const [userNetWorth, setUserNetWorth] = useState('');
+    const [userCurrency, setUserCurrency] = useState('');
+    const [userBio, setUserBio] = useState('');
+    const [errorText, setErrorText] = useState('');
+    const [successText, setSuccessText] = useState('');
+    const [registerEnabled, setRegisterEnabled] = useState(false);
+  
+  const handleUpdate = () => {
+      setErrorText('');
+      if ((!userDob) || (!userHeight) || (!userWeight) || (!userNetWorth) || (!userCurrency) || (!userNationality) || (!userBio)) {
+        setErrorText('All fields are required');
+        return;
+      }
+      let dataToSend = {dob:userDob, height:userHeight, weight:userWeight, nationality:userNationality,
+        net_worth: userNetWorth, currency: userCurrency, bio: userBio}
 
-export default function EditProfile() {
+      api.update(dataToSend)
+      .then(response => {
+        setSuccessText(response.data.message);
+        // If server response message same as Data Matched
+        if (response.status === 201) {
+            navigation.replace('Settings');
+        } else {
+            setErrorText('Please make sure you entered all the required fields');
+        }
+        })
+        .catch((error) => {
+        setErrorText("An Error Occurred Please Try Again");
+        });
+    };
+
     return ( 
+        <ScrollView>
         <View style={{backgroundColor : '#FBE8DA',height: '100%'}}>
             <View style ={{margin:20}}>
                 <View style ={{alignItems:'center'}}>
@@ -37,7 +73,8 @@ export default function EditProfile() {
                             placeholder = "Date of Birth"
                             placeholderTextColor = "#666666"
                             autoCorrect ={false}
-                            style ={styles.textInputt} />
+                            style ={styles.textInputt} 
+                            onChangeText= {(dob)=>{setUserDob(dob)}}/>
                             
                     </View>
                     <View style = {styles.action}>
@@ -46,7 +83,8 @@ export default function EditProfile() {
                             placeholder = "Height"
                             placeholderTextColor = "#666666"
                             autoCorrect ={false}
-                            style ={styles.textInputt} />
+                            style ={styles.textInputt} 
+                            onChangeText={(height) =>{setUserHeight(height)}}/>
                             
                     </View>
                     <View style = {styles.action}>
@@ -56,7 +94,8 @@ export default function EditProfile() {
                             placeholderTextColor = "#666666"
                             keyboardType ='email-address'
                             autoCorrect ={false}
-                            style ={styles.textInputt} />
+                            style ={styles.textInputt} 
+                            onChangeText={(weight)=>{setUserWeight(weight);}}/>
                             
                     </View>
                     <View style = {styles.action}>
@@ -65,16 +104,48 @@ export default function EditProfile() {
                             placeholder = "nationality"
                             placeholderTextColor = "#666666"
                             autoCorrect ={false}
-                            style ={styles.textInputt} />
+                            style ={styles.textInputt} 
+                            onChangeText={(nationality)=>{setUserNationality(nationality)}}/>
+                            
+                    </View>
+                    <View style = {styles.action}>
+                        <Icon name ='wallet' size ={16} />
+                        <TextInput
+                            placeholder = "net worth"
+                            placeholderTextColor = "#666666"
+                            autoCorrect ={false}
+                            style ={styles.textInputt} 
+                            onChangeText={(worth)=>{setUserNetWorth(worth)}}/>
+                            
+                    </View>
+                    <View style = {styles.action}>
+                        <Icon name ='id-badge' size ={16} />
+                        <TextInput
+                            placeholder = "currency"
+                            placeholderTextColor = "#666666"
+                            autoCorrect ={false}
+                            style ={styles.textInputt} 
+                            onChangeText={(currency)=>{setUserCurrency(currency)}}/>
+                            
+                    </View>
+                    <View style = {styles.action}>
+                        <Icon name ='id-badge' size ={16} />
+                        <TextInput
+                            placeholder = "Bio"
+                            placeholderTextColor = "#666666"
+                            autoCorrect ={false}
+                            style ={styles.textInputt} 
+                            onChangeText={(bio)=>{setUserBio(bio)}}/>
                             
                     </View>
                 </View>
-                <TouchableOpacity style={styles.commandButton} onPress ={()=>{}}>
+                <TouchableOpacity style={styles.commandButton} onPress ={handleUpdate}>
                       <Text style ={styles.panelButtonTitle}>Save Changes</Text>                  
                 </TouchableOpacity>
 
             </View>
         </View>
+        </ScrollView>
      );
 }
 
