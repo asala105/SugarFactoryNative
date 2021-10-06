@@ -6,20 +6,17 @@ import { StyleSheet, Text, View } from 'react-native';
 import Login from './screens/login';
 import Register from './screens/register';
 import MainTabScreen from './screens/mainTabScreen';
-
+import AsyncStorage from '@react-native-community/async-storage';
 const Stack = createNativeStackNavigator();
 
-const Auth = () =>{
+const Auth = () => {
   return (
-    <NavigationContainer>
       <Stack.Navigator screenOptions ={{headerStyle :{backgroundColor:'#8C0C33'},headerTintColor:'#F9DEC9'}}>
 
-        <Stack.Screen name = "Login" component = {Login} />
+        <><Stack.Screen name = "Login" component = {Login} />
         <Stack.Screen name = "Register" component = {Register} />
-        
+        </>
       </Stack.Navigator>
-
-    </NavigationContainer>
   );
 }
 
@@ -27,13 +24,23 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions ={{headerStyle :{backgroundColor:'#8C0C33'},headerTintColor:'#F9DEC9'}}>
-
+       
         <Stack.Screen name = "MainTabScreen" component = {MainTabScreen} />
-
+        <Stack.Screen name = "Auth" component = {Auth} options={{headerShown: false}}/>
       </Stack.Navigator>
-
     </NavigationContainer>
   );
 }
-
 export default App;
+// export default function App() {
+//   let auth = null;
+//   AsyncStorage.getItem("access_token").then((value) => {
+//     auth = value;
+//     console.log(auth);
+//   })
+//   return (
+//     <NavigationContainer>
+//         {auth != null?  <Auth/>:<Nav name="home"/>}
+//     </NavigationContainer>
+//   );
+// }

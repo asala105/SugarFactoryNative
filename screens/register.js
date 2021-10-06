@@ -24,13 +24,13 @@ export default function Register({navigation}) {
         return;
       }
       let dataToSend = {first_name:userFname, last_name:userLname, email: userEmail, password: userPassword, gender: userGender, interested_in:userInterest};
-      console.log(dataToSend);
+
       api.register(dataToSend, { headers: { 'Accept': "application/json", 'content-type': "application/json" } })
       .then(response => {
         setSuccessText(response.data.message);
-          // If server response message same as Data Matched
+        // If server response message same as Data Matched
         if (response.status === 201) {
-            //navigation.replace('DrawerNavigationRoutes');
+            navigation.replace('Auth');
         } else {
             setErrorText('Please make sure you entered all the required fields');
         }

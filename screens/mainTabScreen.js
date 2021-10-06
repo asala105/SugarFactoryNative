@@ -1,3 +1,5 @@
+import {useNavigation, NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from './home';
 import SettingsScreen from './settings';
@@ -6,10 +8,22 @@ import MessagesScreen from './messages';
 import React from 'react';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import AsyncStorage from '@react-native-community/async-storage';
 
 const Tab = createMaterialBottomTabNavigator();
 
+
 export default function MainTabScreen() {
+let navigation = useNavigation();
+    let auth = ''
+  AsyncStorage.getItem("access_token").then((value) => {
+    auth = value;
+    console.log(auth);
+    if (auth==null) {
+      navigation.replace('Auth');
+    }
+  })
+
   return (
     // <Tab.Navigator initialRouteName="Home">
     //   <Tab.Screen name="Home" component={HomeScreen} />

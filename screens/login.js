@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import React, {useState, createRef} from 'react';
 import { StyleSheet, Text, View, ScrollView, ImageBackground, Dimensions, Image, Item, TextInput, Button, Pressable } from 'react-native';
@@ -11,7 +12,6 @@ export default function Login( {navigation}) {
   const [errortext, setErrortext] = useState('');
 
   const passwordInputRef = createRef();
-
   const handleLogin = () => {
     setErrortext('');
     if ((!userEmail) || (!userPassword)) {
@@ -24,12 +24,13 @@ export default function Login( {navigation}) {
       // If server response message same as Data Matched
       if (response.status === 200) {
         AsyncStorage.setItem('access_token', response.data.access_token);
-        //navigation.replace('DrawerNavigationRoutes'); Will be added when mohammad is done with the home page
+        navigation.replace('MainTabScreen');
       } else {
         setErrortext('Please check your email id or password');
       }
     })
     .catch((error) => {
+      setErrortext('Please check your email id or password');
       console.error(error);
     });
   };
@@ -60,11 +61,11 @@ export default function Login( {navigation}) {
           <View style={{ marginTop: 30 }}>
             <Text style={{ color: '#8C0C33', fontSize: 14, fontWeight: 'normal',marginBottom:10 }}> <Icon name="user" style={{ fontSize: 16 }} />  Email address</Text>
             <TextInput  placeholder=' Enter your email address' keyboardType='email-address' style={styles.inputs}
-            onChangeText={(UserEmail) => setUserEmail(UserEmail)} ></TextInput>
+            onChangeText={(UserEmail) => {setUserEmail(UserEmail); setErrortext('')} }></TextInput>
 
             <Text style={{ color: '#8C0C33', fontSize: 14, fontWeight: 'normal',marginBottom:10, marginTop:5 }}> <Icon name="lock" style={{ fontSize: 16 }} />  Password</Text>
             <TextInput placeholder=' Enter your password' keyboardType='email-address' style={styles.inputs}
-             onChangeText={(UserPassword) => setUserPassword(UserPassword)}></TextInput>
+             onChangeText={(UserPassword) => {setUserPassword(UserPassword); setErrortext('')}}></TextInput>
           </View>
 
           {/* Error message */}
