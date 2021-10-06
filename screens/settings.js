@@ -6,8 +6,11 @@ import { Avatar, Caption, Title, TouchableRipple } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
+
 
 export default function Settings() {
+    const navigation = useNavigation();
     return ( 
         <ScrollView style={styles.container}>
             <View style = {styles.userInfoSection}>
@@ -55,7 +58,7 @@ export default function Settings() {
                     </View>
                     
                 </TouchableOpacity>
-                <TouchableOpacity>
+                <TouchableOpacity onPress ={()=>navigation.navigate('Settings')} >
                     <View style = {styles.menuItem}>
                         <Icon name = 'cog' color = "#8C0C33" size={25} />
                         <Text style={styles.menuItemText}>Edit Profile</Text>

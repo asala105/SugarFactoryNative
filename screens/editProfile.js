@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, ScrollView, ImageBackground, Dimensions, Image,
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+
 export default function EditProfile() {
     return ( 
         <View style={{backgroundColor : '#FBE8DA',height: '100%'}}>
