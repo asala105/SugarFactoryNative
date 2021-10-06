@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import Settings from './settings';
 import EditProfile from './editProfile';
-
+import Favorites from './favorites';
 
 
 
@@ -19,6 +19,7 @@ export default function Switching(){
         <Stack.Navigator initialRouteName ="Settings">
             <Stack.Screen name = "Settings" component = {Settings} options={{headerShown : false}} />
             <Stack.Screen name = "Edit Profile" component = {EditProfile} options={{headerShown : false}} />
+            <Stack.Screen name = "Favorites" component = {Favorites} options={{headerShown : false}} />
         </Stack.Navigator>
     );
 

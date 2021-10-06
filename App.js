@@ -7,6 +7,7 @@ import Login from './screens/login';
 import Register from './screens/register';
 import MainTabScreen from './screens/mainTabScreen';
 
+
 const Stack = createNativeStackNavigator();
 
 const Auth = () => {

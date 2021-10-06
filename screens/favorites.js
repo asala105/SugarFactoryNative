@@ -6,14 +6,13 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import api from '../api';
 import { FlatList } from 'react-native-gesture-handler';
 
-export default function Home() {
+export default function Favorites() {
 
 
     const [feed, setFeed] = useState({});
-    const allUsers = ()=>{
-      api.getAllUsers()
+    const allFavs = ()=>{
+      api.getAllFavs()
           .then(response => {
-              console.log(JSON.parse(JSON.stringify(response.data)));
               setFeed(response.data);
           })
           .catch(error => {
@@ -21,28 +20,8 @@ export default function Home() {
           });
   }
   useEffect(() => {
-    allUsers();
+    allFavs();
   }, []);
-
-const handleTap = (id) => {
-    api.tapUser(id)
-    .then(response => {
-        alert('Added to favorites list successfully! The other will be notified of your tap!');
-    })
-    .catch(error => {
-        console.log('Error');
-    });
-}
-
-const handleBlock = (id) => {
-    api.blockUser(id)
-    .then(response => {
-        alert('User blocked successfully!');
-    })
-    .catch(error => {
-        console.log('Error');
-    });
-}
 
     return (
         <ScrollView style={{ backgroundColor: '#FBE8DA' }}>
@@ -52,7 +31,6 @@ const handleBlock = (id) => {
                 data={feed}
                 keyExtractor={(item,index) => {
                     return index.toString();
-                    
                 }}
                 renderItem={({ item }) => {
                     return (
@@ -60,23 +38,12 @@ const handleBlock = (id) => {
                     <View style={styles.userinfo}>       
                         <Image style={styles.userimage} source={require('../pictures/avatar2.svg')} />
                         <View>
-                            <Text style={styles.username}>{item.first_name + ' ' + item.last_name}</Text>
-                            <Text style ={styles.bio} > Net Worth: {item.currency===null ? "": item.currency} {item.net_worth===null ? "": item.net_worth}</Text>
+                            <Text style={styles.username}>{item.user.first_name + ' ' + item.user.last_name}</Text>
+                            <Text style ={styles.bio} > Net Worth: {item.user.currency===null ? "": item.user.currency} {item.user.net_worth===null ? "": item.user.net_worth}</Text>
                         </View>
                     </View>
-                    <Text style ={styles.posttext}> Bio: {item.bio} </Text>
+                    <Text style ={styles.posttext}> Bio: {item.user.bio} </Text>
                     <View style={styles.divider} />
-                    <View style ={styles.interactionwrapper}>
-                        <TouchableOpacity style={styles.interaction} onPress={()=>{handleTap(item.id);}} >
-                            <Icon name = 'heart' style={{fontSize:15}}  />
-                            <Text style = {styles.interactiontext}>Tap</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.interaction} onPress={()=>{handleBlock(item.id);}}>
-                            <Icon name = 'ban' style={{fontSize:15}}  />
-                            <Text style = {styles.interactiontext}>Block</Text>
-                        </TouchableOpacity>
-
-                    </View>
                 </View>
                     )}} />
             </View>

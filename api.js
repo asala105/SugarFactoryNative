@@ -23,6 +23,11 @@ export default{
     login: (data) =>
     axios.post(`${BASE_URL}/login`, data),
 
+    logout: async () =>{
+    let header = await getHeader();
+        let res = await axios.get(`${BASE_URL}/logout`, header);
+        return res;
+    },
     register: (data) =>
     axios.post(`${BASE_URL}/register`, data),
 
@@ -47,6 +52,12 @@ export default{
     getAllUsers: async () =>{
         let header = await getHeader();
         let res = await axios.get(`${BASE_URL}/feed`, header);
+        return res;
+    },
+
+    getAllFavs: async () =>{
+        let header = await getHeader();
+        let res = await axios.get(`${BASE_URL}/get_favs`, header);
         return res;
     },
 

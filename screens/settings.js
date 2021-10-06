@@ -28,6 +28,11 @@ useEffect(() => {
     getUser();
 }, [])
 
+const handleLogout = ()=> {
+    api.logout().then((response)=> {console.log('logout')})
+    AsyncStorage.clear();
+    navigation.replace('Auth');
+}
 return ( 
         <ScrollView style={styles.container}>
             <View style = {styles.userInfoSection}>
@@ -68,7 +73,7 @@ return (
 
             </View>
             <View style= {styles.menuWrapper}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress ={()=>navigation.navigate('Favorites')}>
                     <View style = {styles.menuItem}>
                         <Icon name = 'heart' color = "#8C0C33" size={25} />
                         <Text style={styles.menuItemText}>My Favorites</Text>
@@ -79,6 +84,13 @@ return (
                     <View style = {styles.menuItem}>
                         <Icon name = 'cog' color = "#8C0C33" size={25} />
                         <Text style={styles.menuItemText}>Edit Profile</Text>
+                    </View>
+                    
+                </TouchableOpacity>
+                <TouchableOpacity onPress ={handleLogout} >
+                    <View style = {styles.menuItem}>
+                        <Icon name = 'sign-out' color = "#8C0C33" size={25} />
+                        <Text style={styles.menuItemText}>Logout</Text>
                     </View>
                     
                 </TouchableOpacity>
