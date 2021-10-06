@@ -29,43 +29,44 @@ export default function EditProfile() {
                         John Doe
                     </Text>
                 </View>
-                <View style = {styles.action}>
-                    <Icon name ='user' size ={16} />
-                    <TextInput
-                        placeholder = "First Name"
-                        placeholderTextColor = "#666666"
-                        autoCorrect ={false}
-                        style ={styles.textInputt} />
-                        
-                </View>
-                <View style = {styles.action}>
-                    <Icon name ='user' size ={16} />
-                    <TextInput
-                        placeholder = "Last Name"
-                        placeholderTextColor = "#666666"
-                        autoCorrect ={false}
-                        style ={styles.textInputt} />
-                        
-                </View>
-                <View style = {styles.action}>
-                    <Icon name ='envelope' size ={16} />
-                    <TextInput
-                        placeholder = "Email"
-                        placeholderTextColor = "#666666"
-                        keyboardType ='email-address'
-                        autoCorrect ={false}
-                        style ={styles.textInputt} />
-                        
-                </View>
-                <View style = {styles.action}>
-                    <Icon name ='mobile' size ={16} />
-                    <TextInput
-                        placeholder = "Phone number"
-                        placeholderTextColor = "#666666"
-                        keyboardType = 'number-pad'
-                        autoCorrect ={false}
-                        style ={styles.textInputt} />
-                        
+                <View style ={{marginTop : 40}}>
+                    <View style = {styles.action}>
+                        <Icon name ='calendar' size ={16} />
+                        <TextInput
+                            placeholder = "Date of Birth"
+                            placeholderTextColor = "#666666"
+                            autoCorrect ={false}
+                            style ={styles.textInputt} />
+                            
+                    </View>
+                    <View style = {styles.action}>
+                        <Icon name ='ellipsis-v' size ={16} />
+                        <TextInput
+                            placeholder = "Height"
+                            placeholderTextColor = "#666666"
+                            autoCorrect ={false}
+                            style ={styles.textInputt} />
+                            
+                    </View>
+                    <View style = {styles.action}>
+                        <Icon name ='balance-scale' size ={16} />
+                        <TextInput
+                            placeholder = "Weight"
+                            placeholderTextColor = "#666666"
+                            keyboardType ='email-address'
+                            autoCorrect ={false}
+                            style ={styles.textInputt} />
+                            
+                    </View>
+                    <View style = {styles.action}>
+                        <Icon name ='id-badge' size ={16} />
+                        <TextInput
+                            placeholder = "nationality"
+                            placeholderTextColor = "#666666"
+                            autoCorrect ={false}
+                            style ={styles.textInputt} />
+                            
+                    </View>
                 </View>
                 <TouchableOpacity style={styles.commandButton} onPress ={()=>{}}>
                       <Text style ={styles.panelButtonTitle}>Save Changes</Text>                  
@@ -137,8 +138,8 @@ const styles = StyleSheet.create({
     },
     action : {
         flexDirection : 'row',
-        marginTop : 10,
-        marginBottom : 10,
+        marginTop : 15,
+        marginBottom : 15,
         borderBottomWidth : 1,
         borderBottomColor : '#8C0C33',
         paddingBottom : 5
