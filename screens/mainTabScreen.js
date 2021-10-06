@@ -19,7 +19,6 @@ let navigation = useNavigation();
     let auth = ''
   AsyncStorage.getItem("access_token").then((value) => {
     auth = value;
-    console.log(auth);
     if (auth==null) {
       navigation.replace('Auth');
     }

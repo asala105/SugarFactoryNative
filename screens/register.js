@@ -30,6 +30,8 @@ export default function Register({navigation}) {
         setSuccessText(response.data.message);
         // If server response message same as Data Matched
         if (response.status === 201) {
+            //login
+            //go to edit profile
             navigation.replace('Auth');
         } else {
             setErrorText('Please make sure you entered all the required fields');
@@ -184,6 +186,10 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         letterSpacing: 0.25,
         color: '#F9DEC9',
-    }
-
+    },
+    errorTextStyle: {
+        color: 'red',
+        textAlign: 'center',
+        fontSize: 14,
+    },
 });

@@ -1,9 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { StyleSheet, Text, View, ScrollView, ImageBackground, Dimensions, Image, Item, TextInput, Button, Pressable } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
+import api from '../api';
 
 
 const data = [
@@ -16,13 +16,27 @@ const data = [
     {id:7, description: "Lorem ipsum dolor sit amet, indu consectetur adipiscing elit"},
     {id:8, description: "Lorem ipsum dolor sit amet, indu consectetur adipiscing elit"},
     {id:9, description: "Lorem ipsum dolor sit amet, indu consectetur adipiscing elit"},
-    
-
 ]
 
 
 
 export default function Notifications() {
+
+  const [notifications, setNotifications] = useState('');
+  const allNotifications = ()=>{
+    api.getNotifications()
+        .then(response => {
+            //setfetchedMessages(response.data);
+            setNotifications(response.data);
+        })
+        .catch(error => {
+            console.log('Error');
+        });
+}
+useEffect(() => {
+  allNotifications();
+}, []);
+
     return (
         // <View style = {styles.container} >
         //     <FlatList
@@ -51,7 +65,7 @@ export default function Notifications() {
         <ScrollView style={styles.container}>
             <FlatList
                 style={styles.notificationList}
-                data={data}
+                data={notifications}
                 keyExtractor={(item,index) => {
                     return index.toString();
                 }}
@@ -61,7 +75,7 @@ export default function Notifications() {
                             <Image style={styles.icon}
                                source={require('../pictures/avatar1.svg')} />
 
-                            <Text style={styles.description}>{item.description}</Text>
+                            <Text style={styles.description}>{item.body}</Text>
                         </View>
                     )
                 }} />
