@@ -24,7 +24,7 @@ export default function Login( {navigation}) {
       // If server response message same as Data Matched
       if (response.status === 200) {
         AsyncStorage.setItem('access_token', response.data.access_token);
-        navigation.replace('MainTabScreen');
+        navigation.replace('Sugar Factory');
       } else {
         setErrortext('Please check your email id or password');
       }
@@ -64,7 +64,7 @@ export default function Login( {navigation}) {
             onChangeText={(UserEmail) => {setUserEmail(UserEmail); setErrortext('')} }></TextInput>
 
             <Text style={{ color: '#8C0C33', fontSize: 14, fontWeight: 'normal',marginBottom:10, marginTop:5 }}> <Icon name="lock" style={{ fontSize: 16 }} />  Password</Text>
-            <TextInput placeholder=' Enter your password' keyboardType='email-address' style={styles.inputs}
+            <TextInput placeholder=' Enter your password' secureTextEntry={true} keyboardType='email-address' style={styles.inputs}
              onChangeText={(UserPassword) => {setUserPassword(UserPassword); setErrortext('')}}></TextInput>
           </View>
 

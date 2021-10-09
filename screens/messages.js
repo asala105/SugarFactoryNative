@@ -8,25 +8,19 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 const MessagesJson =[
     {
         id : '1',
-        userName : 'jenny Doe',
+        userName : 'Nabih Tannous',
         userImg : require('../pictures/avatar2.svg'),
         messageTime : '4 mins ago',
         messageText : 'Hey there, this is my test for a post my social app in React Native '
     },
     {
         id : '2',
-        userName : 'jenny Doe',
+        userName : 'Nabiha family',
         userImg : require('../pictures/avatar2.svg'),
         messageTime : '4 mins ago',
         messageText : 'Hey there, this is my test for a post my social app in React Native '
     },
-    {
-        id : '3',
-        userName : 'jenny Doe',
-        userImg : require('../pictures/avatar2.svg'),
-        messageTime : '4 mins ago',
-        messageText : 'Hey there, this is my test for a post my social app in React Native '
-    },
+   
 
 ]
 
