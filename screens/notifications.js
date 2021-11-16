@@ -22,30 +22,6 @@ useEffect(() => {
 }, []);
 
     return (
-        // <View style = {styles.container} >
-        //     <FlatList
-        //     data = {data}
-        //     keyExtractor ={(item,index) =>{return index.toString()}}
-        //     renderItem = {({item})=>{
-        //         return (
-        //             <View style = {styles.container}>
-        //                 <View style ={styles.HeaderLeftImageView}>
-        //                     <Image style ={styles.HeaderLeftImage} source={require('../pictures/avataricon.png')} />
-
-        //                 </View>
-        //                 <View style ={{flexDirection: 'row',marginLeft :10}}>
-        //                     <View>
-        //                         <Text style ={{color: '#1B6ADF',fontSize:15}}>{item.username}</Text>
-        //                         <Text style ={{color: '#64676B',fontSize:15}}>{item.time}</Text>
-        //                     </View>
-        //                     <View>
-        //                         <Text style ={{color: '#64676B'}}>{item.notification}</Text>
-        //                     </View>
-        //                 </View>
-        //             </View>
-        //         );
-        //     }} />
-        // </View>
         <ScrollView style={styles.container}>
             <FlatList
                 style={styles.notificationList}
@@ -68,30 +44,6 @@ useEffect(() => {
     );
 }
 
-// const styles = StyleSheet.create({
-
-//     container: {
-//         flex: 1,
-//         width: '100%',
-//         height: '100%',
-//         padding: 15,
-//         backgroundColor: "#F9DEC9"
-
-//     },
-//     HeaderLeftImage: {
-//         width: '100%',
-//         height: '100%',
-//         borderRadius: 50
-//     },
-//     HeaderLeftImageView: {
-//         width: 40,
-//         height: 40,
-//         borderRadius: 40 / 2,
-//         marginLeft: 15,
-//     }
-
-
-// });
 const styles = StyleSheet.create({
     container:{
       backgroundColor:'#FBE8DA'
